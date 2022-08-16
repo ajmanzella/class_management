@@ -7,7 +7,7 @@ services:
     command: npm start
     working_dir: /home/node/app
     volumes:
-      - ./react_app:/home/node/app
+      - ./client:/home/node/app
     ports:
       - "3000:3000"
     depends_on:
