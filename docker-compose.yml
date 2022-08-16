@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    image: node:16
+    user: node
+    command: npm start
+    working_dir: /home/node/app
+    volumes:
+      - ./react_app:/home/node/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgres://postgres:postgres@localhost/ 
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test_pass
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
