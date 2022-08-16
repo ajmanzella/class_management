@@ -1,5 +1,5 @@
 {
-  "name": "react_postgres_docker_app",
+  "name": "xcite_auto_project",
   "version": "1.0.0",
   "description": "A basic starter template for using Node 16 / React 18.2.0 / PostgreSQL 13",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/garymuff/react_postgres_docker_app.git"
+    "url": "git+https://github.com/ajmanzella/xcite_auto_project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/garymuff/react_postgres_docker_app/issues"
+    "url": "https://github.com/ajmanzella/xcite_auto_project/issues"
   },
-  "homepage": "https://github.com/garymuff/react_postgres_docker_app#readme",
+  "homepage": "https://github.com/ajmanzella/xcite_auto_project.git#readme",
   "dependencies": {
     "express": "^4.18.1"
   },
