@@ -1,25 +1,51 @@
 version: '3'
 
 services:
-  web:
-    image: node:16
-    user: node
-    command: npm start
-    working_dir: /home/node/app
+  client:
+    container_name: client
+    image: client:1.0.0
+    build: 
+      context: client
+      dockerfile: Dockerfile
+    working_dir: /home/node/client
     volumes:
-      - ./client:/home/node/app
+      - ./client:/home/node/client
     ports:
       - "3000:3000"
     depends_on:
       - postgres
+    links:
+      - server
     environment:
       NODE_ENV: development
-      DATABASE_URL: postgres://postgres:postgres@localhost/ 
+      DATABASE_URL: postgres://postgres:postgres@localhost/
+    networks:
+      - shared-network
+  server:
+    container_name: server
+    image: server:1.0.0
+    build: 
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgres://postgres:postgres@localhost/
+    networks:
+      - shared-network
   postgres:
     image: postgres:13
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test_pass
       POSTGRES_DB: test
+    volumes:
+      - ./db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - shared-network
+networks:
+  shared-network:
