@@ -1,0 +1,14 @@
+.class {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid rgb(205, 93, 93);
+    background-color: rgba(30, 63, 153, 0.722);
+    width: 400px;
+    text-align: center;
+  }
+  
+  .class span{
+    font-size: 1.2em;
+    text-decoration: none;
+    color: rgb(234, 234, 4);
+  }
