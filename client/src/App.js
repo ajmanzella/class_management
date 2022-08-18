@@ -1,10 +1,14 @@
 import React from 'react';
 import StudentList from './student components/StudentList';
 import ClassList from './class components/ClassList';
+import StudentPage from './student components/StudentPage'
+import ClassPage from './class components/ClassPage'
+import { Routes, Route, NavLink, HashRouter, useLocation } from "react-router-dom";
 
 function App() {
   
   const [data, setData] = React.useState(null);
+  const [clickedStudent, setStudent] = React.useState("")
 
   React.useEffect(() => {
     fetch("/api")
@@ -27,22 +31,21 @@ function App() {
   ];
 
   return (
+    <HashRouter>
     <div className='App'>
       <h1 style={{textAlign: 'center'}}> Class Manager </h1>
       <hr></hr>
-      <div className='StudentList' style={{width: '500px', float: 'left'}}>
-        <StudentList students={students}/>
-        <button>Add Student </button>
-        <button>Remove Student </button>
-      </div>
-      <div className='ClassList' style={{width: '500px', float: 'right'}}>
-        <ClassList classes={classes}/>
-        <button>Add Class </button>
-        <button>Remove Class </button>
+      <div className='content'>
+        <Routes>
+          <Route exact path="/" element={[<StudentList students={students}/>, <ClassList classes={classes}/>]}/>
+          <Route exact path="/StudentPage" element={<StudentPage />}/>
+          <Route exact path="/ClassPage" element={<ClassPage/>}/>
+        </Routes>
       </div>
       <div style={{clear: 'both'}}></div>
       <p>{!data ? "Loading..." : data}</p>
     </div>
+    </HashRouter>
   );
 }
 

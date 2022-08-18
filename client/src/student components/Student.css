@@ -6,7 +6,11 @@
     width: 400px;
     text-align: center;
   }
-  
+
+  .student button{
+    background-color: rgba(30, 63, 153, 0.722);
+  }
+
   .student span{
     font-size: 1.2em;
     text-decoration: none;

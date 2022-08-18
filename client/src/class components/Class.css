@@ -6,6 +6,10 @@
     width: 400px;
     text-align: center;
   }
+
+  .class button{
+    background-color: rgba(30, 63, 153, 0.722);
+  }
   
   .class span{
     font-size: 1.2em;

@@ -3,8 +3,11 @@ import Class from './Class'
 
 export default function ClassList(props) {
   return (
-    <div className='ClassList'>Classes
+    <div className='ClassList' style={{width: '500px', float: 'right'}}>
+      <h1 style={{textAlign: 'center'}}> Classes </h1>
       {props.classes.map(c => <Class key={c.id} name={c.name} />)}
+      <button>Add Student </button>
+      <button>Remove Student </button>
     </div>
   )
 }
