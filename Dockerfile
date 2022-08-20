@@ -6,6 +6,7 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm install
+RUN npx prisma generate
 
 COPY . .
 

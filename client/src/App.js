@@ -3,18 +3,24 @@ import StudentList from './student components/StudentList';
 import ClassList from './class components/ClassList';
 import StudentPage from './student components/StudentPage'
 import ClassPage from './class components/ClassPage'
-import { Routes, Route, NavLink, HashRouter, useLocation } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 
 function App() {
   
-  const [data, setData] = React.useState(null);
-  const [clickedStudent, setStudent] = React.useState("")
+  const [studentData, setStudentData] = React.useState(null);
+  const [classData, setClassData] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+      const fetchData = async () => {
+        //console.log("here")
+        const response = await fetch(`/home`);
+        const newData = await response.json();
+        //console.log(newData)
+        setStudentData(newData.studentList);
+        setClassData(newData.classList);
+      };
+      fetchData();
+  });
 
   const students = [
     { id: 1, name: "Leanne Graham" },
@@ -37,13 +43,12 @@ function App() {
       <hr></hr>
       <div className='content'>
         <Routes>
-          <Route exact path="/" element={[<StudentList students={students}/>, <ClassList classes={classes}/>]}/>
-          <Route exact path="/StudentPage" element={<StudentPage />}/>
-          <Route exact path="/ClassPage" element={<ClassPage/>}/>
+          <Route exact path="/" element={[<StudentList students={studentData}/>, <ClassList classes={classData}/>]}/>
+          <Route exact path="/StudentPage" element={<StudentPage classes={classes}/>}/>
+          <Route exact path="/ClassPage" element={<ClassPage students={students}/>}/>
         </Routes>
       </div>
       <div style={{clear: 'both'}}></div>
-      <p>{!data ? "Loading..." : data}</p>
     </div>
     </HashRouter>
   );

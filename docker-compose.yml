@@ -18,7 +18,7 @@ services:
       - server
     environment:
       NODE_ENV: development
-      DATABASE_URL: postgres://postgres:postgres@localhost/
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/
     networks:
       - shared-network
   server:
@@ -32,17 +32,18 @@ services:
       - postgres
     environment:
       NODE_ENV: development
-      DATABASE_URL: postgres://postgres:postgres@localhost/
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/
     networks:
       - shared-network
   postgres:
     image: postgres:13
+    container_name: postgres
     environment:
-      POSTGRES_USER: test
-      POSTGRES_PASSWORD: test_pass
-      POSTGRES_DB: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ./mydb:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:

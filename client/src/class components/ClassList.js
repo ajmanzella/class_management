@@ -6,8 +6,8 @@ export default function ClassList(props) {
     <div className='ClassList' style={{width: '500px', float: 'right'}}>
       <h1 style={{textAlign: 'center'}}> Classes </h1>
       {props.classes.map(c => <Class key={c.id} name={c.name} />)}
-      <button>Add Student </button>
-      <button>Remove Student </button>
+      <button>Add Class </button>
+      <button>Remove Class </button>
     </div>
   )
 }
