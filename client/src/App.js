@@ -7,8 +7,8 @@ import { Routes, Route, HashRouter } from "react-router-dom";
 
 function App() {
   
-  const [studentData, setStudentData] = React.useState(null);
-  const [classData, setClassData] = React.useState(null);
+  const [studentData, setStudentData] = React.useState([]);
+  const [classData, setClassData] = React.useState([]);
 
   React.useEffect(() => {
       const fetchData = async () => {
@@ -20,7 +20,7 @@ function App() {
         setClassData(newData.classList);
       };
       fetchData();
-  });
+  }, []);
 
   const students = [
     { id: 1, name: "Leanne Graham" },

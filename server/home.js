@@ -15,29 +15,35 @@ router.get('/', async(req, res, next) => {
 });
 
 router.post('/newClass', async(req, res, next) => {
-    
-    //const newClass = await prisma.classes.create({
-        //data: {name: 'CSE250'},
-    //})
+    const newClass = await prisma.classes.create({
+        data: req.body,
+    })
     console.log(req.body)
-    res.send({message: 'api is working'});
+    res.send({message: 'Class Created'});
 });
 
 router.delete('/removeClass', async(req, res, next) => {
-    res.send({message: 'api is working'});
+    const removedClass = await prisma.classes.delete({
+        where: req.body,
+    })
+    console.log(req.body)
+    res.send({message: 'Class Removed'});
 });
 
 router.post('/newStudent', async(req, res, next) => {
-    //const newStudent = await prisma.students.create({
-        //data: {name: 'Anthony Manzella'},
-    //})
+    const newStudent = await prisma.students.create({
+        data: req.body,
+    })
     console.log(req.body)
-    res.send({message: 'api is working'});
+    res.send({message: 'Student Created'});
 });
 
 router.delete('/removeStudent', async(req, res, next) => {
+    const removedStudent = await prisma.students.delete({
+        where: req.body,
+    })
     console.log(req.body)
-    res.send({message: 'api is working'});
+    res.send({message: 'Student Deleted'});
 });
 
 module.exports = router;
