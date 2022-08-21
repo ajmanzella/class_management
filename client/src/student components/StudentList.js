@@ -25,12 +25,11 @@ export default function StudentList(props) {
     event.preventDefault(); 
     try {
       await addStudent();
-      alert('Student Added!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Registration failed! ${e.message}`);
+      console.log(`Registration failed! ${e.message}`);
     }
   }
   const deleteStudent = async () => {
@@ -47,12 +46,11 @@ export default function StudentList(props) {
     event.preventDefault(); 
     try {
       await deleteStudent();
-      alert('Student Removed!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Removal failed! ${e.message}`);
+      console.log(`Removal failed! ${e.message}`);
     }
   }
 
@@ -64,12 +62,12 @@ export default function StudentList(props) {
         <form onSubmit={onSubmitAddStudent}>
           <label>Name:</label>
           <input value={values.addName} onChange={set('addName')}/>
-          <button type="submit" >Add Student </button>
+          <button type="submit" onClick={() => window.location.reload(false)}>Add Student </button>
         </form>
         <form onSubmit={onSubmitDeleteStudent}>
           <label>Name:</label>
           <input value={values.deleteName} onChange={set('deleteName')}/>
-          <button type='submit' >Remove Student </button>
+          <button type='submit' onClick={() => window.location.reload(false)}>Remove Student </button>
         </form>
       </div>
     </div>

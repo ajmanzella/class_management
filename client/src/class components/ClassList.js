@@ -24,12 +24,11 @@ export default function ClassList(props) {
     event.preventDefault(); 
     try {
       await addClass();
-      alert('Class Added!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Class Creation failed! ${e.message}`);
+      console.log(`Class Creation failed! ${e.message}`);
     }
   }
   const deleteClass = async () => {
@@ -46,12 +45,11 @@ export default function ClassList(props) {
     event.preventDefault(); 
     try {
       await deleteClass();
-      alert('Class Removed!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Class Removal failed! ${e.message}`);
+      console.log(`Class Removal failed! ${e.message}`);
     }
   }
 
@@ -63,12 +61,12 @@ export default function ClassList(props) {
         <form onSubmit={onSubmitAddClass}>
           <label>Name:</label>
           <input value={values.addName} onChange={set('addName')}/>
-          <button type="submit" >Add Class </button>
+          <button type="submit" onClick={() => window.location.reload(false)}>Add Class </button>
         </form>
         <form onSubmit={onSubmitDeleteClass}>
           <label>Name:</label>
           <input value={values.deleteName} onChange={set('deleteName')}/>
-          <button type='submit' >Remove Class </button>
+          <button type='submit' onClick={() => window.location.reload(false)}>Remove Class </button>
         </form>
       </div>
     </div>

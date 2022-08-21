@@ -28,12 +28,11 @@ export default function ClassPage(props) {
     event.preventDefault(); 
     try {
       await addStudent();
-      alert('Student Enrolled!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Enrollment failed! ${e.message}`);
+      console.log(`Enrollment failed! ${e.message}`);
     }
   }
   const deleteStudent = async () => {
@@ -50,12 +49,11 @@ export default function ClassPage(props) {
     event.preventDefault(); 
     try {
       await deleteStudent();
-      alert('Student Dropped!');
       setValues({
         addName: '', deleteName: ''
       });
     } catch (e) {
-      alert(`Drop failed! ${e.message}`);
+      console.log(`Drop failed! ${e.message}`);
     }
   }
 
@@ -85,12 +83,12 @@ export default function ClassPage(props) {
           <form onSubmit={onSubmitAddStudent}>
             <label>Name:</label>
             <input value={values.addName} onChange={set('addName')} />
-            <button type="submit" >Add Student </button>
+            <button type="submit" onClick={() => window.location.reload(false)}>Add Student </button>
           </form>
           <form onSubmit={onSubmitDeleteStudent}>
             <label>Name:</label>
             <input value={values.deleteName} onChange={set('deleteName')} />
-            <button type='submit' >Remove Student </button>
+            <button type='submit' onClick={() => window.location.reload(false)}>Remove Student </button>
           </form>
         </div>
       </div>
