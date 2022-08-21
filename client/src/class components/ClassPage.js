@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 export default function ClassPage(props) {
   let location = useLocation();
   const [values, setValues] = React.useState({ addName: '', deleteName: '' });
+  const [classStudents, setClassStudents] = React.useState([])
 
   const set = name => {
     return ({ target: { value } }) => {
@@ -36,7 +37,7 @@ export default function ClassPage(props) {
     }
   }
   const deleteStudent = async () => {
-    const response = await fetch('/home/removeStudent', {
+    const response = await fetch('/classEnrollment/dropStudent', {
       method: 'PUT',
       headers: {'Content-Type': "application/json; charset=utf-8"},
       body: JSON.stringify({"studentName": values.deleteName, "className": location.state.className.name})
@@ -58,11 +59,28 @@ export default function ClassPage(props) {
     }
   }
 
+  React.useEffect(() => {
+    const fetchData = async () => {
+      //console.log("here")
+      const response = await fetch(`/classEnrollment`, {
+        method: 'POST',
+        headers: { 'Content-Type': "application/json; charset=utf-8" },
+        body: JSON.stringify({name: location.state.className.name})
+      });
+      const newData = await response.json();
+      console.log(newData)
+      if (newData.classInfo.classlist != null){
+        setClassStudents(newData.classInfo.classlist);
+      }
+    };
+    fetchData();
+  }, [location]);
+
   return (
     <div className='ClassPage' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <h1 style={{ textAlign: 'center' }}> {location.state.className.name} </h1>
       <div className='content' style={{ width: '500px', justifyContent: 'center', alignItems: 'center' }}>
-        {props.students.map(c => <Student key={c.id} name={c.name} />)}
+        {classStudents.map(c => <Student key={c.id} name={c.name} />)}
         <div className='createDelete'>
           <form onSubmit={onSubmitAddStudent}>
             <label>Name:</label>

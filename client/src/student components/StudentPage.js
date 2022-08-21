@@ -68,7 +68,9 @@ export default function StudentPage(props) {
       });
       const newData = await response.json();
       console.log(newData)
-      setStudentClasses(newData.studentInfo.enrolled);
+      if (newData.studentInfo.enrolled != null){
+        setStudentClasses(newData.studentInfo.enrolled);
+      }
     };
     fetchData();
   }, [location]);
