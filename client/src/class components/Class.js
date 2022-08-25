@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Class.css";
-import { Routes, Route, NavLink, HashRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Class(props) {
   const name = props.name
