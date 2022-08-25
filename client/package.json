@@ -39,6 +39,8 @@
   },
   "devDependencies": {
     "@prisma/client": "^4.2.1",
-    "prisma": "^4.2.1"
+    "bootstrap": "^5.2.0",
+    "prisma": "^4.2.1",
+    "react-bootstrap": "^2.5.0"
   }
 }

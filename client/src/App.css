@@ -1,0 +1,7 @@
+.App {
+    margin: 100px;
+    align-items: center;
+    align-content: center;
+    border: 5px solid rgb(205, 93, 93);
+    background-color: rgba(76, 118, 236, 0.722);
+  }

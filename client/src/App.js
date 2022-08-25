@@ -3,7 +3,9 @@ import StudentList from './student components/StudentList';
 import ClassList from './class components/ClassList';
 import StudentPage from './student components/StudentPage'
 import ClassPage from './class components/ClassPage'
+import "./App.css"
 import { Routes, Route, HashRouter } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   

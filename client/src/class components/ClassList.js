@@ -57,7 +57,7 @@ export default function ClassList(props) {
     <div className='ClassList' style={{width: '500px', float: 'right'}}>
       <h1 style={{textAlign: 'center'}}> Classes </h1>
       {props.classes.map(c => <Class key={c.id} name={c.name} />)}
-      <div className='createDelete'>
+      <div className='createDelete' style={{width: "50%", margin: "0 auto"}}>
         <form onSubmit={onSubmitAddClass}>
           <label>Name:</label>
           <input value={values.addName} onChange={set('addName')}/>
